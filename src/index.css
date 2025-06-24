@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-weight: 600;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+* {
+  /* font-family: "Kanit", sans-serif; */
+  font-family: "Nunito Sans", sans-serif;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 18px;
+}

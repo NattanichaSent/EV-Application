@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
