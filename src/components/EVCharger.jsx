@@ -1,78 +1,123 @@
-import React from 'react';
-import { Typography } from 'antd';
+import {
+    ThunderboltOutlined,
+} from '@ant-design/icons'
 
-const { Text } = Typography;
+function EVCharger({
+    percent = 0,
+    status = 'Available',
+    remainingTime = 'No time',
+    cap = 0,
+    capMax = 0,
+    chargerName = '',
+    chargingNum = '',
+    evCar = '-',
+    chargeDate = '',
+    startTime = '-',
+    endTime = '-',
+    issue = "Not Ready"
+}) {
+    // สีของกรอบ
+    const borderColor =
+        status === 'Available'
+            ? 'border-[#38B9A0]'
+            : status === 'Charging'
+                ? 'border-[#001342]'
+                : status === 'Unavailable'
+                    ? 'border-[#E85D51]'
+                    : 'border-gray-400';
 
-function EVCharger() {
-    const percent = 65;
-    const remainingTime = '2h 15m';
+    // สีของปลายแบต
+    const tipColor =
+        status === 'Available'
+            ? 'bg-[#38B9A0]'
+            : status === 'Charging'
+                ? 'bg-[#001342]'
+                : status === 'Unavailable'
+                    ? 'bg-[#E85D51]'
+                    : 'bg-gray-400';
+
+    // พื้นหลังแบตเตอรี่
+    const bgColor =
+        status === 'Available'
+            ? 'bg-[#CDF0E9]'
+            : status === 'Unavailable'
+                ? 'bg-[#FADBD8]'
+                : 'bg-white';
+
+    // สีของข้อความสถานะ
+    const statusColor =
+        status === 'Available'
+            ? 'text-[#38B9A0]'
+            : status === 'Charging'
+                ? 'text-[#CAA40C]'
+                : status === 'Unavailable'
+                    ? 'text-[#E85D51]'
+                    : 'text-gray-400';
 
     return (
-        <div style={{ width: '100%', maxWidth: '420px', fontFamily: 'sans-serif' }}>
-            {/* Label */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                <Text strong>Charging</Text>
-                <Text type="secondary">{remainingTime} remaining</Text>
+        <div className="w-full">
+            {/* Top Label */}
+            <div className="flex justify-between mb-2 text-[12px]">
+                <div className="flex gap-x-1 items-center ">
+                    <p className="font-bold">{chargerName}</p>
+                    <p className={statusColor}>- {status} </p>
+                    {status === 'Charging' && (
+                        <>
+                            <div className='flex'>
+                                <ThunderboltOutlined style={{ color: '#CAA40C' }} />
+                                <p>{chargingNum}</p>
+                            </div>
+                        </>
+                    )}
+                </div>
+                {status !== 'Available' && status !== 'Unavailable' && <p className='text-gray-600'>{remainingTime} rem.</p>}
+
             </div>
 
-            {/* Battery frame */}
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                {/* Battery body */}
-                <div
-                    style={{
-                        flex: 1,
-                        height: '32px',
-                        border: '3px solid #001342',
-                        borderRadius: '6px',
-                        position: 'relative',
-                        backgroundColor: '#fff',
-                        overflow: 'hidden',
-                    }}
-                >
+            {/* Battery Frame */}
+            <div className="flex items-center">
+                <div className={`relative flex-1 h-[50px] border-[3px] ${borderColor} ${bgColor} rounded-md overflow-hidden`}>
                     {/* Yellow fill */}
                     <div
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            height: '100%',
-                            width: `${percent}%`,
-                            backgroundColor: '#FFD600',
-                            transition: 'width 0.4s ease',
-                            zIndex: 0,
-                        }}
+                        className="absolute top-0 left-0 h-full bg-[#F4D03F] transition-all duration-300"
+                        style={{ width: `${percent}%` }}
                     />
 
-                    {/* Text on top of fill */}
+                    {/* Text inside bar */}
                     <div
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontWeight: 'bold',
-                            color: percent > 50 ? '#001342' : '#000',
-                            zIndex: 1,
-                        }}
+                        className={`absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center font-bold z-10 ${percent > 50 ? 'text-[#001342]' : 'text-black'
+                            }`}
                     >
-                        {percent}%
+                        <div>{percent}%</div>
+                        <div className="text-[11px] text-gray-500">
+                            {cap} / {capMax} kW
+                        </div>
                     </div>
                 </div>
 
                 {/* Battery tip */}
-                <div
-                    style={{
-                        width: '8px',
-                        height: '20px',
-                        backgroundColor: '#001342',
-                        marginLeft: '4px',
-                        borderRadius: '2px',
-                    }}
-                />
+                <div className={`w-2 h-5 ml-1 rounded-sm ${tipColor}`} />
+            </div>
+
+            {/* Bottom Text */}
+            <div className="flex justify-between mt-2 text-[12px]">
+                <p className={`font-bold ${status === 'Available' ? 'text-[#38B9A0]' : status === 'Unavailable' ? 'text-[#E85D51]' : 'text-[#0031A8]'}`}>
+                    {status === 'Available'
+                        ? 'Ready to use'
+                        : status === 'Unavailable'
+                            ? issue
+                            : evCar}
+                </p>
+                <div className="flex gap-x-1 text-gray-400">
+                    <p>{chargeDate}</p>
+                    <p>{startTime}</p>
+                    {status !== 'Available' && status !== 'Unavailable' && (
+                        <>
+                            <p>|</p>
+                            <p>{endTime}</p>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

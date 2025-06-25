@@ -28,13 +28,13 @@ function EVStatus() {
                     <p>Available</p>
                     <p className="text-[22px] font-bold">5</p>
                     <div className="flex space-x-1">
-                        <p className="text-[#5BBA19]">41.67%</p>
+                        <p className="text-[#38B9A0]">41.67%</p>
                         <p>of total</p>
                     </div>
                 </div>
                 <CheckOutlined
-                    style={{ fontSize: '24px', color: '#5BBA19' }}
-                    className="bg-[#E1F9D0] p-2 rounded-lg h-fit"
+                    style={{ fontSize: '24px', color: '#38B9A0' }}
+                    className="bg-[#CDF0E9] p-2 rounded-lg h-fit"
                 />
             </div>
 

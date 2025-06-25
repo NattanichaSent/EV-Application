@@ -60,7 +60,7 @@ const BarChart = ({ chartData, chartTitle = 'Bar Chart' }) => {
     };
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow-md space-y-5">
+        <div className="bg-white p-4 rounded-lg space-y-5 hover:bg-gray-50 shadow-md">
             <h2 className="text-lg font-semibold">{chartTitle}</h2>
             <div className="w-full h-[300px] sm:h-[350px] md:h-[400px]">
                 <Bar data={chartData} options={options} />

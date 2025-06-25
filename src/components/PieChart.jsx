@@ -31,7 +31,7 @@ const PieChart = ({ data, title = 'Pie Chart' }) => {
     };
 
     return (
-        <div className="bg-white p-4 rounded shadow-md ">
+        <div className="bg-white p-4 rounded-lg hover:bg-gray-50 shadow-md">
             <h2 className="mb-5">{title}</h2>
             <Pie data={data} options={options} />
         </div>
