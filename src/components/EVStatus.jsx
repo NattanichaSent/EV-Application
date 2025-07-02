@@ -1,4 +1,4 @@
-import React from 'react'
+import UtilizationData from '../Datamockup/UtilizationData';
 import {
     CheckOutlined,
     ThunderboltOutlined,

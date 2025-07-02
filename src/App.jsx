@@ -9,13 +9,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
+        <Route index element={<StationOverview />} />
         <Route path="overview" element={<StationOverview />} />
         <Route path="operation" element={<OperationDashboard />} />
         <Route path="management" element={<ManagementDashboard />} />
         <Route path="billingReports" element={<BillingReports />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;

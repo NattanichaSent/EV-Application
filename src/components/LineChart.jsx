@@ -80,7 +80,7 @@ const LineChart = ({ chartData, chartTitle = 'Line Chart' }) => {
 
     return (
         <div className="bg-white p-4 rounded-lg flex flex-col justify-between h-full space-y-5 hover:bg-gray-50 shadow-md">
-            <h2>{chartTitle}</h2>
+            <p className='w-full text-[16px]'>{chartTitle}</p>
             <div className="flex-1 relative overflow-x-auto">
                 <div className='min-w-[1000px] h-full'>
                     <Line data={chartData} options={options} />

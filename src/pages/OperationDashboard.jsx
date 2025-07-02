@@ -15,6 +15,7 @@ import stationData from '../Datamockup/stationData';
 
 import DisplayFilter from '../filters/DisplayFilter';
 import StationSelector from '../filters/StationSelector';
+import Clock from '../components/Clock';
 
 function OperationDashboard() {
     const [visibleComponents, setVisibleComponents] = useState({
@@ -38,8 +39,10 @@ function OperationDashboard() {
     return (
         <div className="space-y-5">
             {/* Page Title */}
-            <h1>Operation Dashboard</h1>
-
+            <div className='flex justify-between items-center'>
+                <h1>Operation Dashboard</h1>
+                <Clock />
+            </div>
             {/* Header Section */}
             <div className="lg:flex lg:justify-between md:flex md:justify-between items-center">
                 <div className="flex space-x-2 items-center">

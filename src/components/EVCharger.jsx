@@ -19,40 +19,49 @@ function EVCharger({
     // สีของกรอบ
     const borderColor =
         status === 'Available'
-            ? 'border-[#38B9A0]'
+            ? 'border-[#3093DE]'
             : status === 'Charging'
                 ? 'border-[#001342]'
                 : status === 'Unavailable'
                     ? 'border-[#E85D51]'
-                    : 'border-gray-400';
+                    : status === 'Finishing'
+                        ? 'border-[#38B9A0]'
+                        : 'border-gray-400';
 
     // สีของปลายแบต
     const tipColor =
         status === 'Available'
-            ? 'bg-[#38B9A0]'
+            ? 'bg-[#3093DE]'
             : status === 'Charging'
                 ? 'bg-[#001342]'
                 : status === 'Unavailable'
                     ? 'bg-[#E85D51]'
-                    : 'bg-gray-400';
+                    : status === 'Finishing'
+                        ? 'bg-[#38B9A0]'
+                        : 'bg-gray-400';
 
     // พื้นหลังแบตเตอรี่
     const bgColor =
         status === 'Available'
-            ? 'bg-[#CDF0E9]'
+            ? 'bg-[#E0EFFA]'
             : status === 'Unavailable'
                 ? 'bg-[#FADBD8]'
-                : 'bg-white';
+                : status === 'Finishing'
+                    ? 'bg-[#CDF0E9]'
+                    : 'bg-white';
 
     // สีของข้อความสถานะ
     const statusColor =
         status === 'Available'
-            ? 'text-[#38B9A0]'
+            ? 'text-[#3093DE]'
             : status === 'Charging'
                 ? 'text-[#CAA40C]'
                 : status === 'Unavailable'
                     ? 'text-[#E85D51]'
-                    : 'text-gray-400';
+                    : status === 'Finishing'
+                        ? 'text-[#2C927E]'
+                        : 'text-gray-400';
+
 
     return (
         <div className="w-full">
@@ -79,9 +88,10 @@ function EVCharger({
                 <div className={`relative flex-1 h-[50px] border-[3px] ${borderColor} ${bgColor} rounded-md overflow-hidden`}>
                     {/* Yellow fill */}
                     <div
-                        className="absolute top-0 left-0 h-full bg-[#F4D03F] transition-all duration-300"
+                        className={`absolute top-0 left-0 h-full transition-all duration-300 ${percent === 100 ? 'bg-[#7FD8C7]' : 'bg-[#F4D03F]'}`}
                         style={{ width: `${percent}%` }}
                     />
+
 
                     {/* Text inside bar */}
                     <div
@@ -101,7 +111,7 @@ function EVCharger({
 
             {/* Bottom Text */}
             <div className="flex justify-between mt-2 text-[12px]">
-                <p className={`font-bold ${status === 'Available' ? 'text-[#38B9A0]' : status === 'Unavailable' ? 'text-[#E85D51]' : 'text-[#0031A8]'}`}>
+                <p className={`font-bold ${status === 'Available' ? 'text-[#3093DE]' : status === 'Unavailable' ? 'text-[#E85D51]' : 'text-[#0031A8]'}`}>
                     {status === 'Available'
                         ? 'Ready to use'
                         : status === 'Unavailable'
