@@ -1,5 +1,5 @@
 import {
-    RiseOutlined
+    ThunderboltOutlined
 } from "@ant-design/icons";
 
 function PowerCons() {
@@ -9,7 +9,7 @@ function PowerCons() {
                 <div>
                     <p className="w-full text-[16px]">Total Power Consumption</p>
                     <div className="flex space-x-2">
-                        <RiseOutlined />
+                        <ThunderboltOutlined />
                         <p className='text-[22px] font-bold'>3500</p>
                     </div>
                     <p className="text-gray-400">Last updated</p>

@@ -94,17 +94,18 @@ function EVCharger({
                     <div
                         className={`relative flex-1 h-[40px] border-[3px] ${borderColor} ${bgColor} rounded-md overflow-hidden`}
                     >
-                        {status !== "Unavailable" && (
+                        {status !== "Unavailable" && status !== "Preparing" && (
                             <div
                                 className={`absolute top-0 left-0 h-full transition-all duration-300 ${status === "Charging"
-                                    ? "bg-[#F4D03F]"
-                                    : percent === 100
-                                        ? "bg-[#96DFD1]"
-                                        : "bg-gray-200"
+                                        ? "bg-[#F4D03F]"
+                                        : percent === 100
+                                            ? "bg-[#96DFD1]"
+                                            : "bg-gray-200"
                                     }`}
                                 style={{ width: `${percent}%` }}
                             />
                         )}
+
                         <div
                             className={`absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center font-bold z-10   ${percent > 50 ? "text-[#001342]" : "text-black"
                                 }`}

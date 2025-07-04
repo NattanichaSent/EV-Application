@@ -1,5 +1,5 @@
 import {
-    RiseOutlined
+    ThunderboltOutlined
 } from "@ant-design/icons";
 
 function PowerUsage() {
@@ -9,7 +9,7 @@ function PowerUsage() {
                 <div>
                     <p className="w-full text-[16px]">Current Power Usage</p>
                     <div className="flex space-x-2">
-                        <RiseOutlined />
+                        <ThunderboltOutlined />
                         <p className='text-[22px] font-bold'>750</p>
                     </div>
                     <p className="text-gray-400">Last updated</p>

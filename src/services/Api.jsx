@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const baseUrl = import.meta.env.DEV
+  ? "/api/EvApp"
+  : import.meta.env.VITE_BASE_URL;
 
 export const getChargingStatus = async () => {
-  return await axios.get('/api/ChargingStatus');
+  return await axios.get(`${baseUrl}/ChargingStatus`);
 };
